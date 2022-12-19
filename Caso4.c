@@ -4,6 +4,8 @@
 #define true 1
 #define false 0
 
+//Caso 4: Primeira parte ordenada decrescentemente, segunda parte crescentemente
+
 void mostrar(int * vetor){
 	int i = 0;
 
@@ -28,20 +30,10 @@ void trocarLugares(int * primeiro, int * segundo){ //Utilizo o conceito de ponte
 	*segundo = auxiliar; //atribuio o valor do auxiliar ao segundo
 }
 
-
-/*
-	O algoritmo comb sort � um algoritmo de ordena��o baseado no bubbleSort;
-	Enquanto que no bubble sort cada elemento � comparado com seu vizinho a direita(gap � igual a 1),
-	no comb sort cada elemento � comparado com o elemento cujo indice � dado por um fator(o gap), sendo o gap calculado a cada itera��o
-	Apesar de pequena essa mudan�a ajuda a eliminar as chamadas Tartarugas(valores menores que ficam no final da lista e tornam o bubble sort mais lento).
-*/
 void combSort(int * vetor, int tamanho){
 	int i = 0;
 	int gap = tamanho; //Inicializo o gap com o tamanho do vetor;
-	//O gap � o espa�o entre o elemento de refer�ncia e o elemento que irei compara-lo
-	//em algoritmos como o bubble sort esse gap � igual a 1(vizinho com vizinho).
-	//No comb sort esse espa�o � calculado baseado em um fator de encolhimento que por conven��o e simula��es � igual a 1,3
-
+	
 	int houveTrocaDeLugares; //vari�vel flag, que ir� monitorar se houve ou n�o troca de lugares entre os elementos
 
 	do{
@@ -54,18 +46,13 @@ void combSort(int * vetor, int tamanho){
 				trocarLugares(&vetor[i], &vetor[i + gap]); //Caso seja maior, fa�o a troca dos elementos
 				houveTrocaDeLugares = true; //e a flag vira true
 			}
-
 		}
 
 	}while(gap != 1 || houveTrocaDeLugares == true);
 	//Tudo isso ser� executado enquanto o gap (distancia) for diferente de 1 e n�o houver tido troca de lugares na itera��o
 	//Quanto mais itera��es forem executadas, menor ser� o gap, at� o ponto que ele ser� igual a 1
-	//nesse momento ainda podem haver elementos desordenados, por isso o vetor s� estar� completamente
-	//ordenado quando al�m de o gap ser igual a 1, n�o houver tido nenhuma troca de lugar na itera��o.
+	//Estara ordenado quando al�m de o gap ser igual a 1, n�o houver tido nenhuma troca de lugar na itera��o.
 }
-
-
-
 void main(){
 	int vetor[TAM];
 	int x=0;
